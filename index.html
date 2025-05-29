@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aastha Gupta - Product Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 100px 0 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .about {
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9ff;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .projects {
+            background: #f8f9ff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-impact {
+            background: #e8f2ff;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-impact strong {
+            color: #667eea;
+        }
+
+        .skills {
+            background: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: #666;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Aastha Gupta</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Aastha Gupta</h1>
+            <p class="subtitle">Associate Product Manager & AI Innovation Leader</p>
+            <p class="description">
+                Driving product strategy and automation solutions that deliver measurable business impact. 
+                Specialized in B2B platforms, AI-powered systems, and cross-functional team leadership.
+            </p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Product Manager with a strong background in mathematics and a love for solving complex business problems through technology and automation.</p>
+                    
+                    <p>Currently serving as Associate Product Manager at TravClan, I've led the development of innovative B2B products that have significantly improved operational efficiency and revenue growth. My expertise spans product strategy, AI development, and team leadership across diverse tech stacks.</p>
+                    
+                    <p>I believe in data-driven decision making, user-centered design, and the power of automation to transform business processes.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Cross-sell Revenue Increase</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Manual Workload Reduction</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">User Interviews Conducted</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">13%</div>
+                        <div class="stat-label">Lead Conversion Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" onclick="openModal('modal1')">
+                    <div class="project-tag">Product Launch</div>
+                    <h3 class="project-title">B2B Activities Booking Platform</h3>
+                    <p class="project-description">
+                        Delivered a real-time booking platform for sightseeing and transfers with seamless third-party API integration.
+                    </p>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> 25% increase in cross-sell revenue through integrated booking system
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('modal2')">
+                    <div class="project-tag">AI Innovation</div>
+                    <h3 class="project-title">AI-Powered Lead Scoring System</h3>
+                    <p class="project-description">
+                        Built an intelligent lead scoring system using sentiment analysis and historical data to optimize sales processes.
+                    </p>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Improved lead-to-conversion rate from 10% to 13%
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('modal3')">
+                    <div class="project-tag">Process Automation</div>
+                    <h3 class="project-title">Internal Processing Automation</h3>
+                    <p class="project-description">
+                        Revolutionized post-booking workflows using AI and Make.com to dramatically reduce processing time.
+                    </p>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Reduced turnaround time from 72+ hours to 24-48 hours
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('modal4')">
+                    <div class="project-tag">Product Innovation</div>
+                    <h3 class="project-title">Route Planning Feature</h3>
+                    <p class="project-description">
+                        Led development of an innovative route planning feature that won the Extra Mile Achiever award.
+                    </p>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Enhanced user experience with customizable travel itineraries
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Product Strategy</h3>
+                    <ul class="skill-list">
+                        <li>Roadmap Planning</li>
+                        <li>A/B Testing</li>
+                        <li>User Journey Design</li>
+                        <li>Feature Prioritization</li>
+                        <li>Product Analytics</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>AI Development</h3>
+                    <ul class="skill-list">
+                        <li>Prompt Engineering</li>
+                        <li>AI Agent Design</li>
+                        <li>Lead Scoring Models</li>
+                        <li>Sentiment Analysis</li>
+                        <li>Automation Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Low-Code Platforms</h3>
+                    <ul class="skill-list">
+                        <li>Make.com</li>
+                        <li>Google Apps Script</li>
+                        <li>Zapier</li>
+                        <li>API Integrations</li>
+                        <li>Workflow Automation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul class="skill-list">
+                        <li>Figma</li>
+                        <li>JIRA & Asana</li>
+                        <li>Amplitude</li>
+                        <li>Excel & Analytics</li>
+                        <li>API Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Connect</h2>
+                <p>I'm always interested in discussing product management opportunities, AI innovations, or collaboration on exciting projects.</p>
+                <div class="contact-links">
+                    <a href="mailto:aasthag929@gmail.com" class="contact-link">Email Me</a>
+                    <a href="https://linkedin.com/in/aastha-gupta" class="contact-link" target="_blank">LinkedIn</a>
+                    <a href="tel:+918085824414" class="contact-link">+91 8085824414</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals for detailed project information -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>B2B Activities Booking Platform</h2>
+            <p><strong>Challenge:</strong> TravClan needed a comprehensive booking platform for B2B clients to book sightseeing activities and transfers in real-time.</p>
+            
+            <p><strong>My Role:</strong> Led the end-to-end product development as Associate Product Manager, from concept to launch.</p>
+            
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Integrated 3 third-party APIs for real-time inventory and booking</li>
+                <li>Designed user-friendly booking flow for travel agents</li>
+                <li>Implemented automated confirmation and voucher generation</li>
+                <li>Coordinated go-to-market strategy with sales and support teams</li>
+            </ul>
+            
+            <p><strong>Impact:</strong> The platform contributed to a 25% increase in cross-sell revenue and became a key differentiator for TravClan's B2B offering.</p>
+            
+            <p><strong>Technologies:</strong> API Integration, Real-time booking systems, Third-party platform integration</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>AI-Powered Lead Scoring System</h2>
+            <p><strong>Challenge:</strong> Manual lead qualification was inefficient, with only 10% conversion rate and no systematic way to prioritize high-potential leads.</p>
+            
+            <p><strong>My Role:</strong> Designed and built the AI system architecture, implemented sentiment analysis, and integrated with existing CRM workflows.</p>
+            
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Developed sentiment analysis algorithms to analyze incoming emails</li>
+                <li>Built lead scoring models using historical conversion data</li>
+                <li>Automated lead classification and prioritization</li>
+                <li>Created dashboard for sales team to track lead scores</li>
+            </ul>
+            
+            <p><strong>Impact:</strong> Improved lead-to-conversion rate from 10% to 13%, enabling smarter sales decision-making and better resource allocation.</p>
+            
+            <p><strong>Technologies:</strong> AI/ML, Sentiment Analysis, CRM Integration, Data Analytics</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Internal Processing Automation with AI</h2>
+            <p><strong>Challenge:</strong> Post-booking workflows were taking 72+ hours, creating delays and poor partner experience.</p>
+            
+            <p><strong>My Role:</strong> Led the automation initiative using AI and Make.com to streamline internal processes.</p>
+            
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Mapped existing manual processes and identified automation opportunities</li>
+                <li>Implemented AI-powered workflow automation using Make.com</li>
+                <li>Created real-time confirmation and voucher generation system</li>
+                <li>Integrated with existing booking and partner systems</li>
+            </ul>
+            
+            <p><strong>Impact:</strong> Reduced turnaround time from 72+ hours to 24-48 hours, significantly improving operational speed and partner satisfaction.</p>
+            
+            <p><strong>Technologies:</strong> Make.com, AI automation, API integration, Workflow optimization</p>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Route Planning in Holidays Product</h2>
+            <p><strong>Challenge:</strong> Users needed a way to customize their travel itinerary by selecting cities and nights, but existing systems were rigid and limited.</p>
+            
+            <p><strong>My Role:</strong> Owned the complete product lifecycle from wireframing to adoption, leading cross-functional development team.</p>
+            
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Conducted user research to understand travel planning needs</li>
+                <li>Created wireframes and user journey maps</li>
+                <li>Led development of interactive route planning interface</li>
+                <li>Implemented city selection and accommodation booking integration</li>
+            </ul>
+            
+            <p><strong>Impact:</strong> Won the Extra Mile Achiever award for product innovation and user experience enhancement. Feature became a key differentiator in the holidays product.</p>
+            
+            <p><strong>Technologies:</strong> User Experience Design, Product Development, Cross-functional Leadership</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Add scrolling effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
